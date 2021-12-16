@@ -1,12 +1,17 @@
 const express = require('express')
 const path = require('path')
-
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'a3af9b3ebf92489498bb800ea34a0d74',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
 const app = express()
 app.use(express.json())
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname, '/public/index.html'))
     // record a generic message and send it to Rollbar
-    // rollbar.info("html file served successfully");
+    rollbar.info("html file served successfully");
 
 })
 const port = process.env.PORT || 4545
