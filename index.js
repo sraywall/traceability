@@ -17,6 +17,11 @@ app.get("/",(req,res)=>{
 app.get("/error",(req,res)=>{
     doesntExist()
 })
+
+app.get('/css', (req,res)=>{
+    res.sendFile(path.join(__dirname,'styles.css'))
+})
+
 const port = process.env.PORT || 4545
 app.use(rollbar.errorHandler())
 rollbar.critical("Whoa man!")
