@@ -15,13 +15,9 @@ app.get("/",(req,res)=>{
 
 })
 app.get("/error",(req,res)=>{
-    //res.sendFile(path.join(__dirname, '/public/index.html'))
-    // record a generic message and send it to Rollbar
-    //rollbar.info("html file served successfully");
     doesntExist()
-
 })
 const port = process.env.PORT || 4545
 app.use(rollbar.errorHandler())
-
+rollbar.critical("Whoa man!")
 app.listen(port,()=>console.log(`Take us to warp ${port}`))
