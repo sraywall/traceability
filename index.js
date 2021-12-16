@@ -25,4 +25,5 @@ app.get('/css', (req,res)=>{
 const port = process.env.PORT || 4545
 app.use(rollbar.errorHandler())
 rollbar.critical("Whoa man!")
+rollbar.warning("This is a warning!")
 app.listen(port,()=>console.log(`Take us to warp ${port}`))
